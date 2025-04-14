@@ -12,7 +12,8 @@ class ProfesionalController extends Controller
      */
     public function index()
     {
-        //
+        $profesionales = Profesional::all();
+        return view('profesionales.index', compact('profesionales'));
     }
 
     /**
