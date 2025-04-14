@@ -2,34 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\Profesional;
 use Illuminate\Http\Request;
 
 class ProfesionalController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $profesionales = Profesional::all();
         return view('profesionales.index', compact('profesionales'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
         return view('profesionales.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
@@ -39,34 +29,22 @@ class ProfesionalController extends Controller
             'email' => 'required|email|unique:profesionales,email',
         ]);
 
-
         Profesional::create($request->all());
-
 
         return redirect()->route('profesionales.index')->with('success', 'Profesional creado correctamente.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function show(Profesional $profesional)
     {
         return view('profesionales.show', compact('profesional'));
-
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Profesional $profesional)
     {
         return view('profesionales.edit', compact('profesional'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Profesional $profesional)
     {
         $request->validate([
             'nombre' => 'required',
@@ -77,22 +55,15 @@ class ProfesionalController extends Controller
             'email' => 'required|email|unique:profesionales,email,' . $profesional->id,
         ]);
 
-
         $profesional->update($request->all());
 
-
         return redirect()->route('profesionales.index')->with('success', 'Profesional actualizado correctamente.');
-
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Profesional $profesional)
     {
         $profesional->delete();
 
         return redirect()->route('profesionales.index')->with('success', 'Profesional eliminado correctamente.');
-
     }
 }

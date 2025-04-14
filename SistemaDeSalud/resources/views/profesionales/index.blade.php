@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-
 @section('title', 'Lista de Profesionales')
-
 
 @section('content')
     <h1>Profesionales</h1>
