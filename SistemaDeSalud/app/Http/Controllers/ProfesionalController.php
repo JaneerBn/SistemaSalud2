@@ -21,7 +21,7 @@ class ProfesionalController extends Controller
      */
     public function create()
     {
-        //
+        return view('profesionales.create');
     }
 
     /**
@@ -29,7 +29,22 @@ class ProfesionalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
+        $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'especialidad' => 'required',
+            'horarios' => 'required',
+            'telefono' => 'required',
+            'email' => 'required|email|unique:profesionales,email',
+        ]);
+
+
+        Profesional::create($request->all());
+
+
+        return redirect()->route('profesionales.index')->with('success', 'Profesional creado correctamente.');
     }
 
     /**
