@@ -30,7 +30,6 @@ class ProfesionalController extends Controller
     public function store(Request $request)
     {
         
-
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
@@ -76,6 +75,9 @@ class ProfesionalController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $profesional->delete();
+
+        return redirect()->route('profesionales.index')->with('success', 'Profesional eliminado correctamente.');
+
     }
 }

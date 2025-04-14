@@ -22,7 +22,13 @@ Route::middleware('auth')->group(function () {
 
     // Profesionales de Salud
     Route::get('/profesionales', [ProfesionalController::class, 'index'])->name('profesionales.index');
+    Route::get('/profesionales/create', [ProfesionalController::class, 'create'])->name('profesionales.create');
+    Route::post('/profesionales', [ProfesionalController::class, 'store'])->name('profesionales.store');
+    Route::delete('/profesionales/{profesional}', [ProfesionalController::class, 'destroy'])->name('profesionales.destroy');
 
+
+
+    
 });
 
 
