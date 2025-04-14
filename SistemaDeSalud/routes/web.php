@@ -29,15 +29,17 @@ Route::middleware('auth')->group(function () {
     Route::put('/pacientes/{paciente}', [PacienteController::class, 'update'])->name('pacientes.update');
     Route::delete('/pacientes/{paciente}', [PacienteController::class, 'destroy'])->name('pacientes.destroy');
 
-    
 
     
+    
 
 
 
 
 
 
+
+    
 
     // Citas Médicas
     Route::get('/citas', [CitaController::class, 'index'])->name('citas.index');
