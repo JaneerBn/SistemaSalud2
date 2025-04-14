@@ -33,7 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/profesionales/create', [ProfesionalController::class, 'create'])->name('profesionales.create');
     Route::post('/profesionales', [ProfesionalController::class, 'store'])->name('profesionales.store');
     Route::get('/profesionales/{profesional}', [ProfesionalController::class, 'show'])->name('profesionales.show');
-    
+    Route::get('/profesionales/{profesional}/edit', [ProfesionalController::class, 'edit'])->name('profesionales.edit');
+    Route::put('/profesionales/{profesional}', [ProfesionalController::class, 'update'])->name('profesionales.update');
+
     
     
 

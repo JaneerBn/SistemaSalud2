@@ -60,6 +60,14 @@ class ProfesionalController extends Controller
      */
     public function edit(string $id)
     {
+        return view('profesionales.edit', compact('profesional'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
         $request->validate([
             'nombre' => 'required',
             'apellido' => 'required',
@@ -74,14 +82,7 @@ class ProfesionalController extends Controller
 
 
         return redirect()->route('profesionales.index')->with('success', 'Profesional actualizado correctamente.');
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
     }
 
     /**
