@@ -51,7 +51,8 @@ class ProfesionalController extends Controller
      */
     public function show(string $id)
     {
-        //
+        return view('profesionales.show', compact('profesional'));
+
     }
 
     /**
@@ -59,7 +60,20 @@ class ProfesionalController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'especialidad' => 'required',
+            'horarios' => 'required',
+            'telefono' => 'required',
+            'email' => 'required|email|unique:profesionales,email,' . $profesional->id,
+        ]);
+
+
+        $profesional->update($request->all());
+
+
+        return redirect()->route('profesionales.index')->with('success', 'Profesional actualizado correctamente.');
     }
 
     /**
