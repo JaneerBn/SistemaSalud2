@@ -1,5 +1,4 @@
 <?php
- 
  use App\Http\Controllers\ProfileController;
  use App\Http\Controllers\PacienteController;
  use App\Http\Controllers\ProfesionalController;
