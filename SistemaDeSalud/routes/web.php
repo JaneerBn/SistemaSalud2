@@ -26,7 +26,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/profesionales', [ProfesionalController::class, 'store'])->name('profesionales.store');
     Route::delete('/profesionales/{profesional}', [ProfesionalController::class, 'destroy'])->name('profesionales.destroy');
     Route::get('/profesionales/{profesional}', [ProfesionalController::class, 'show'])->name('profesionales.show');
-
+    
 
 
     
